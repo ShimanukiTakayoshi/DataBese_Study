@@ -26,6 +26,9 @@ Partial Class Form1
     Me.ButtonConnect = New System.Windows.Forms.Button()
     Me.DataGridView1 = New System.Windows.Forms.DataGridView()
     Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+    Me.ButtonDisconnect = New System.Windows.Forms.Button()
+    Me.ButtonReload = New System.Windows.Forms.Button()
+    Me.ButtonSubmit = New System.Windows.Forms.Button()
     CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
@@ -45,14 +48,44 @@ Partial Class Form1
     Me.DataGridView1.Location = New System.Drawing.Point(8, 48)
     Me.DataGridView1.Name = "DataGridView1"
     Me.DataGridView1.RowTemplate.Height = 21
-    Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
+    Me.DataGridView1.Size = New System.Drawing.Size(343, 150)
     Me.DataGridView1.TabIndex = 1
+    '
+    'ButtonDisconnect
+    '
+    Me.ButtonDisconnect.Location = New System.Drawing.Point(97, 12)
+    Me.ButtonDisconnect.Name = "ButtonDisconnect"
+    Me.ButtonDisconnect.Size = New System.Drawing.Size(76, 29)
+    Me.ButtonDisconnect.TabIndex = 2
+    Me.ButtonDisconnect.Text = "切断"
+    Me.ButtonDisconnect.UseVisualStyleBackColor = True
+    '
+    'ButtonReload
+    '
+    Me.ButtonReload.Location = New System.Drawing.Point(275, 12)
+    Me.ButtonReload.Name = "ButtonReload"
+    Me.ButtonReload.Size = New System.Drawing.Size(76, 29)
+    Me.ButtonReload.TabIndex = 4
+    Me.ButtonReload.Text = "再読み込み"
+    Me.ButtonReload.UseVisualStyleBackColor = True
+    '
+    'ButtonSubmit
+    '
+    Me.ButtonSubmit.Location = New System.Drawing.Point(186, 13)
+    Me.ButtonSubmit.Name = "ButtonSubmit"
+    Me.ButtonSubmit.Size = New System.Drawing.Size(76, 29)
+    Me.ButtonSubmit.TabIndex = 3
+    Me.ButtonSubmit.Text = "提出"
+    Me.ButtonSubmit.UseVisualStyleBackColor = True
     '
     'Form1
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
     Me.ClientSize = New System.Drawing.Size(504, 261)
+    Me.Controls.Add(Me.ButtonDisconnect)
+    Me.Controls.Add(Me.ButtonReload)
+    Me.Controls.Add(Me.ButtonSubmit)
     Me.Controls.Add(Me.DataGridView1)
     Me.Controls.Add(Me.ButtonConnect)
     Me.Name = "Form1"
@@ -66,4 +99,7 @@ Partial Class Form1
   Friend WithEvents ButtonConnect As Button
   Friend WithEvents DataGridView1 As DataGridView
   Friend WithEvents BindingSource1 As BindingSource
+  Friend WithEvents ButtonDisconnect As Button
+  Friend WithEvents ButtonReload As Button
+  Friend WithEvents ButtonSubmit As Button
 End Class
