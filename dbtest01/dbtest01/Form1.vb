@@ -13,11 +13,13 @@ Public Class Form1
       ButtonDisconnect.Enabled = value
       ButtonSubmit.Enabled = value
       ButtonReload.Enabled = value
+      BindingNavigator1.Enabled = value
     End Set
   End Property
 
   Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     DataGridView1.DataSource = BindingSource1
+    BindingNavigator1.BindingSource = BindingSource1
     Connected = False
   End Sub
 
@@ -25,7 +27,7 @@ Public Class Form1
     Dim connectString = "Data Source=localhost\sqlexpress;" & "Initial Catalog=Test1;" & "integrated Security=true"
     Dim selectString = "select * from table1"
     Try
-      Dim DataAdapter = New SqlDataAdapter(selectString, connectString)
+      DataAdapter = New SqlDataAdapter(selectString, connectString)
       Dim commandBuilder = New SqlCommandBuilder(DataAdapter)
       Dim dataTable = New DataTable()
       DataAdapter.Fill(dataTable)
@@ -33,10 +35,19 @@ Public Class Form1
     Catch ex As Exception
       MessageBox.Show(ex.Message, "エラー")
     End Try
+    LabelId.DataBindings.Add("Text", BindingSource1, "Id")
+    TextBoxName.DataBindings.Add("Text", BindingSource1, "Name")
+    TextBoxBirthday.DataBindings.Add("Text", BindingSource1, "Birthday", True)
     Connected = True
   End Sub
 
   Private Sub ButtonDisconnect_Click(sender As Object, e As EventArgs) Handles ButtonDisconnect.Click
+    LabelId.DataBindings.Clear()
+    TextBoxName.DataBindings.Clear()
+    TextBoxBirthday.DataBindings.Clear()
+    LabelId.Text = ""
+    TextBoxName.Text = ""
+    TextBoxBirthday.Text = ""
     BindingSource1.DataSource = vbNull
     DataAdapter.Dispose()
     DataGridView1.Update()
@@ -51,4 +62,6 @@ Public Class Form1
     ButtonDisconnect_Click(sender, e)
     ButtonConnect_Click(sender, e)
   End Sub
+
+
 End Class
