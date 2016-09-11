@@ -25,10 +25,10 @@ Public Class Form1
     Dim connectString = "Data Source=localhost\sqlexpress;" & "Initial Catalog=Test1;" & "integrated Security=true"
     Dim selectString = "select * from table1"
     Try
-      Dim dataAdapter = New SqlDataAdapter(selectString, connectString)
-      Dim commandBuilder = New SqlCommandBuilder(dataAdapter)
-      Dim dataTable = New DataTable
-      dataAdapter.Fill(dataTable)
+      Dim DataAdapter = New SqlDataAdapter(selectString, connectString)
+      Dim commandBuilder = New SqlCommandBuilder(DataAdapter)
+      Dim dataTable = New DataTable()
+      DataAdapter.Fill(dataTable)
       BindingSource1.DataSource = dataTable
     Catch ex As Exception
       MessageBox.Show(ex.Message, "エラー")
